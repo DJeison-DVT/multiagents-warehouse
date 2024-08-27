@@ -259,25 +259,13 @@ class WarehouseModel(ap.Model):
     def step(self):
         self.robots.step()
         self.steps += 1
+        return self.grid.grid
 
     def end(self):
         return {
             'steps': self.steps,
             'moves': [agent.moves for agent in self.robots]
         }
-
-
-parameters = {
-    'M': 10,
-    'N': 10,
-    "steps": 25,
-    'robots': 5,
-    'objects': 30,
-    'stacks': 0,
-}
-
-
-# A FUNCTION TO ANIMATE THEE SIMULATION
 
 
 def animation_plot(model, ax):
@@ -304,12 +292,20 @@ def animation_plot(model, ax):
 # SIMULATION:
 
 
-fig, ax = plt.subplots()
+# parameters = {
+#     'M': 10,
+#     'N': 10,
+#     "steps": 25,
+#     'robots': 5,
+#     'objects': 30,
+#     'stacks': 0,
+# }
 
-model = WarehouseModel(parameters)
+
+# model = WarehouseModel(parameters)
 
 # Run with animation
 # model.run()
 
-animation = ap.animate(model, fig, ax, animation_plot)
-IPython.display.HTML(animation.to_jshtml())
+# animation = ap.animate(model, fig, ax, animation_plot)
+# IPython.display.HTML(animation.to_jshtml())
